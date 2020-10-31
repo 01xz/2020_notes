@@ -52,6 +52,10 @@ Once the partitions have been created, each must be formatted with an appropriat
 
 * Run `arch-chroot /mnt`
 
+### Install vim
+
+* Run `pacman -S vim`
+
 ### Set Time Zone
 
 * Run `ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime`.
