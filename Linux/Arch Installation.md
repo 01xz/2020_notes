@@ -1,6 +1,6 @@
 # Arch Linux Installation Notes
 
-## Connect to the Internet
+## 1. Connect to the Internet
 
 * Use `ip link` to check the network interface.
 * Use `ip link set <netowrk interface> up` to turn on the device.
@@ -10,11 +10,11 @@
 * Use `dhcpcd &` to get a dynamic IP address.
 * Use `ping baidu.com` to check the internet connection.
 
-## Update the system clock
+## 2. Update the system clock
 
 * Use `timedatectl set-ntp true` to ensure the system clock is accurate.
   
-## Partition the disks
+## 3. Partition the disk
 
 * Use `fdisk -l` to check the disk devices.
 * Use `fdisk /dev/<disk name>` to enter *fdisk*.
@@ -22,27 +22,27 @@
 
 Once the partitions have been created, each must be formatted with an appropriate **file system**.
 
-* Use `mkfs.fat -F32 /dev/<device partition>` to set *EFI* partition format.
-* Use `mkfs.ext4 /dev/<device partition>` to set *root* partition format.
-* Use `mkswap /dev/<device partition>` and `swapon /dev/<device partition>` to set *swap* partition format.
+* Use `mkfs.fat -F32 /dev/<efi partition>` to set *EFI* partition format.
+* Use `mkfs.ext4 /dev/<root partition>` to set *root* partition format.
+* Use `mkswap /dev/<swap partition>` and `swapon /dev/<swap partition>` to set *swap* partition format.
 
-## Configurate pacman
+## 4. Configurate pacman
 
 * Run `vim /etc/pacman.conf`.
 * Enable `Color`.
 * Run `vim /etc/pacman.d/mirrorlist` to edit the mirrors list.
 
-## Mount the file systems
+## 5. Mount the file systems
 
 * Run `mount /dev/<root partition> /mnt`
 * Run `mkdir /mnt/boot`
-* Run `mount /dev/<EFI partition> /mnt/boot`
+* Run `mount /dev/<efi partition> /mnt/boot`
 
-## Installation
+## 6. Installation
 
 * Run `pacstrap /mnt base linux linux-firmware`
   
-## Configure the system
+## 7. Configure the system
 
 ### Fstab
 
@@ -54,7 +54,7 @@ Once the partitions have been created, each must be formatted with an appropriat
 
 ### Set Time Zone
 
-* Run `ln -sf /usr/share/zoneinfo/Aisa/Shanghai /etc/localtime`.
+* Run `ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime`.
 * Run `hwclock --systohc`
 
 ### Localization
@@ -112,10 +112,10 @@ pacman -S grub efibootmgr amd-ucode os-prober
 ### Install some tools
 
 ```
-pacman -S vim git wpa_supplicant dhcpcd
+pacman -S git wpa_supplicant dhcpcd
 ```
 
-### Reboot
+## 8. Reboot
 
 ```
 # exit
@@ -123,7 +123,7 @@ pacman -S vim git wpa_supplicant dhcpcd
 # reboot
 ```
 
-## Enter the system
+## 9. Enter the system
 
 ### Install X Windows Server
 
