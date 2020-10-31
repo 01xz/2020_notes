@@ -129,12 +129,34 @@ pacman -S git wpa_supplicant dhcpcd
 
 ## 9. Enter the system
 
+### Install some necessary softwares
+
+```
+# pacman -S man base-devel
+```
+
+### Add a new user
+
+* add a new user 
+```
+# useradd -m -G wheel <username>
+# passwd <username>
+```
+
+* link nvim to vi or vim
+```
+# ln -s /usr/bin/nvim /usr/bin/vi
+# ln -s /usr/bin/nvim /usr/bin/vim
+```
+
+* Run `visudo` and uncomment `%wheel ALL=(ALL) ALL`
+
+* Exit root and login as new user
+
 ### Install X Windows Server
 
 ```
-$ sudo pacman -S xorg-server
-$ sudo pacman -S xorg-apps
-$ sudo pacman -S xorg-xinit
+$ sudo pacman -S xorg-server xorg-apps xorg-xinit
 ```
 
 ### Install Dispaly Manager
