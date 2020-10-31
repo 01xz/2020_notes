@@ -159,10 +159,12 @@ pacman -S git wpa_supplicant dhcpcd
 $ sudo pacman -S xorg-server xorg-apps xorg-xinit
 ```
 
-### Install Dispaly Manager
+### configure in VMWare
 
 ```
-$ sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
+$ cvt 1920 1080 60
+$ xrandr --newmode <Modeline>
+$ xrandr --addmode Virtual-1 <name>
+$ xrandr --output Virtual-1 --mode 1920x1080_60.00
 ```
 
-### Install dwm
