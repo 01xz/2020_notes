@@ -168,3 +168,7 @@ $ xrandr --addmode Virtual-1 <name>
 $ xrandr --output Virtual-1 --mode 1920x1080_60.00
 ```
 
+### Prepare for install dwm
+
+* install `picom` and `nitrogen`
+* 
