@@ -156,10 +156,12 @@ pacman -S git wpa_supplicant dhcpcd
 ### Install X Windows Server
 
 ```
-$ sudo pacman -S xorg-server xorg-apps xorg-xinit
+$ sudo pacman -S xorg-server xorg-xinit xorg-xrandr xorg-xsetroot nitrogen picom
 ```
 
 ### configure in VMWare
+
+If you are using VMWare, try following commands to set right resolution
 
 ```
 $ cvt 1920 1080 60
@@ -170,5 +172,18 @@ $ xrandr --output Virtual-1 --mode 1920x1080_60.00
 
 ### Prepare for install dwm
 
-* install `picom` and `nitrogen`
-* 
+* install `picom` and `nitrogen`, 
+* copy `/etc/X11/xinit/xinitrc` to `~/.xinitrc`
+```
+$ cp /etc/X11/xinit/xinitrc .xinitrc
+```
+* edit `.xinitrc`
+```
+# delete the last 5 lines
+# add the following lines
+
+picom -f &
+exec dwm
+
+```
+* run `startx`
