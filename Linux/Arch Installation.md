@@ -187,3 +187,17 @@ exec dwm
 
 ```
 * run `startx`
+
+### solve screen tear
+
+* install `xf86-video-intel`
+* run `sudo nvim /etc/X11/xorg.conf.d/20-intel.conf`
+
+```
+Section "Device"
+    Identifier  "Intel Graphics"
+    Driver      "intel"
+    Option "TearFree" "true"
+    Option "AccelMethod" "sna"
+EndSection
+```
