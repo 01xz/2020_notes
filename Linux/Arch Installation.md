@@ -182,7 +182,7 @@ $ cp /etc/X11/xinit/xinitrc .xinitrc
 # delete the last 5 lines
 # add the following lines
 
-picom -f &
+picom -cCGf &
 exec dwm
 
 ```
