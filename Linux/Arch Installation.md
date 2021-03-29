@@ -201,3 +201,27 @@ Section "Device"
     Option "AccelMethod" "sna"
 EndSection
 ```
+
+### use ssr
+
+* install shadowsocksr-native
+
+```
+$ git clone https://github.com/ShadowsocksR-Live/shadowsocksr-native.git
+$ mv shadowsocksr-native ssr-n
+$ cd ssr-n
+$ git submodule update --init
+$ git submodule foreach -q 'git checkout $(git config -f $toplevel/.gitmodules submodule.$name.branch || echo master)'
+
+$ mkdir build && cd build
+$ cmake .. && sudo make install
+```
+
+* edit the configure file in `/etc/`, and do not change `listen_address`
+* run `ssr-client -h` to start ssr
+* set proxy for git
+
+```
+$ git config --global http.https://github.com.proxy http://127.0.0.1:1080
+$ git config --global https.https://github.com.proxy http://127.0.0.1:1080
+```
